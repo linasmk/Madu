@@ -1,0 +1,65 @@
+/* ======================= Single Menu ================================
+====================================================================*/
+.hero_single__menu {
+	height: 50vh;
+	position: relative;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	@include horizontalFlex(center, center);
+	text-align: center;
+}
+.hero_single__menu::after {
+	@include imageOverlay(
+		linear-gradient(
+    	rgba(255, 255, 255  , 0), 
+    	rgba(0,0,0, .3) 35% 65%, 
+    	rgba(255, 255, 255  , 0)
+    	),
+		linear-gradient(
+    	rgba(255, 255, 255  , 0), 
+    	rgba(0,0,0, .3) 35% 65%, 
+    	rgba(255, 255, 255  , 0)
+    	)
+    	);
+}
+.hero_single__menu h2 {
+	margin: 0;
+	color: $white;
+	font-size: 2em;
+	z-index: 2;
+}
+.specialty_single__content {
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+}
+.specialty_single__price {
+	width: 100%;
+	@include horizontalFlex(space-between, center);
+	border-bottom: 1px solid $soilBrown;
+	color: $soilBrown;
+	margin: 0;
+	padding: 5px 0;
+	margin-bottom: 25px;
+	box-sizing: border-box;
+}
+.specialty_single__content h5 {
+	color: $soilBrown;
+	font-size: 2em;
+
+}
+/* ============== Media Queries =============== */
+
+/* ============== Media Queries Orientation Landscape =============== */
+
+@media screen and (orientation: landscape) and (min-width: 530px) {
+	.hero_single__menu {
+		height: 70vh;
+	}
+}
+@media screen and (orientation: landscape) and (min-width: 850px) {
+	.hero_single__menu {
+		height: 50vh;
+	}
+}

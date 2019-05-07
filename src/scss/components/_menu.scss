@@ -1,0 +1,186 @@
+/* ============== Menu ===============
+==========================================*/
+.hero_menu {
+	height: 40vh;
+	width: 100%;
+	background-position: center center;
+	background-size: cover;
+	@include horizontalFlex(center, center);
+	position: relative;
+}
+.hero_menu::after {
+    @include imageOverlay(
+    	linear-gradient(
+    	rgba(255, 255, 255  , 0), 
+    	rgba(0,0,0, .3), 
+    	rgba(255, 255, 255  , 0)
+    	),
+		linear-gradient(
+    	rgba(255, 255, 255  , 0), 
+    	rgba(0,0,0, .3) 35% 65%, 
+    	rgba(255, 255, 255  , 0)
+    	)
+    	);
+}
+.primary_text {
+	color: $white;
+	margin: 0 25px;
+	z-index: 2;
+}
+.menu_wrapper {
+	width: 100%;
+	text-align: center;
+}
+.menu_wrapper h3 {
+	margin: 0 0 10px 0;
+	height: 50px;
+	line-height: 50px;
+	color: $white;
+	background: linear-gradient(15deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8),
+	            	rgba(0, 102, 26, .97));
+	background: linear-gradient(15deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8) 40% 60%,
+	            	rgba(0, 102, 26, .97));
+}
+.specialties {
+	width: 80%;
+	margin: 0 auto;
+}
+.grid_container {
+		width: 100%;
+		margin-bottom: 35px;
+	}
+.grid_column {
+	position: relative;
+	padding: 3px;
+	text-align: left;
+	}
+.grid_column h4 {
+	margin: 0;
+}
+.grid_column h5 {
+	margin: 15px 0 0 0;
+}
+.grid_column p {
+	font-size: .9em;
+}
+.specialty_img {
+	max-width: 100%;
+	height: 158px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center center;
+	position: relative;
+	
+}
+.specialty_price {
+	width: 100%;
+	@include horizontalFlex(space-between, center);
+	border-bottom: 1px solid $black;
+	margin: 0;
+	padding: 5px 10px;
+	box-sizing: border-box;
+	background: linear-gradient(15deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8),
+	            	rgba(0, 102, 26, .97));
+	background: linear-gradient(15deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8) 40% 60%,
+	            	rgba(0, 102, 26, .97));
+}
+.specialty_price span {
+	font-size: 1em;
+	color: $white;
+	font-weight: 900;
+}
+.specialty_link {
+	@include linkButton(100px, 25px, $soilBrown, $white, 25px);
+	transition: transform .4s ease-out;
+	box-shadow: none;
+	font-size: 16px;
+}
+.specialty_link:hover {
+	transform: scale(1.025);
+}
+
+
+/* ============== Media Queries =============== */
+	
+@media screen and (min-width: 420px) {
+	.specialty_img {
+		height: 200px;
+	}
+}
+@media screen and (min-width: 480px) {
+	.specialty_img {
+		height: 225px;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.grid_container {
+		width: 100%;
+		@include horizontalFlex(flex-start, flex-start);
+		flex-wrap: wrap;
+	}
+	.grid_column {
+	    flex-basis: 50%;
+	    box-sizing: border-box;
+	}
+	.grid_column h4 {
+		min-height: 100px;
+	}
+	.specialty_img {
+		height: 150px;
+	}
+}
+@media screen and (min-width: 768px) {
+	.primary_text {
+		font-size: 3em;
+	}
+	.specialty_img {
+		height: 186px;
+	}
+}
+@media screen and (min-width: 900px) {
+	.grid_column {
+	    flex-basis: 33.33%;
+	}
+	.primary_text {
+		font-size: 4em;
+	}
+	.specialty_img {
+		height: 149px;
+	}
+}
+@media screen and (min-width: 1100px) {
+	.specialty_img {
+		height: 187px;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.specialty_img {
+		height: 205px;
+	}
+}
+@media screen and (min-width: 1500px) {
+	.specialty_img {
+		height: 300px;
+	}
+}
+@media screen and (min-width: 2000px) {
+	.specialty_img {
+		height: 350px;
+	}
+}
+/* ============== Media Queries Orientation Landscape =============== */
+
+@media screen and (orientation: landscape) and (min-width: 998px) {
+	.hero_menu {
+		height: 60vh;
+	}
+}

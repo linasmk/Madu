@@ -1,0 +1,93 @@
+/*!
+Theme Name: Madu
+Theme URI: http://bravenewwebsites.com
+Author: Linas Mackonis
+Author URI: http://bravenewwebsites.com
+Description: This website is dedicated to the restaurant/night-pub-like place called Madu.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: African cuisine, night-pub, bar, a place to party, Vilnius center
+Text Domain: madu;
+*/ 
+
+/* ======================= IMPORTS ================================
+====================================================================*/
+@import "globals/normalize";
+@import "globals/variables";
+@import "globals/mixins";
+@import "globals/typography";
+
+@import "components/header";
+@import "components/footer";
+@import "components/about";
+@import "components/menu";
+@import "components/single_menu";
+@import "components/events";
+
+/* ======================= GLOBALS ================================
+====================================================================*/
+* {
+	box-sizing: border-box;
+}
+*, *::before, *::after {
+	box-sizing: inherit;
+}
+figure {
+	margin: 0;
+}
+
+/* ======================= Events - Single  ================================
+====================================================================*/
+
+/* ============== Hero =============== */
+.main_events__single {
+    width: 100%;
+    text-align: center;
+}
+.main_events__single h3 {
+	margin: 0 0 10px 0;
+	padding: 10px 0;
+	line-height: 30px;
+	color: $white;
+	background: linear-gradient(15deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8),
+	            	rgba(0, 102, 26, .97));
+	background: linear-gradient(15deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8) 40% 60%,
+	            	rgba(0, 102, 26, .97));
+}
+.single_post {
+	width: 80%;
+	margin: 0 auto 50px auto;
+	text-align: left;
+}
+.post_date time span {
+	color: $soilBrown;
+	font-size: 12px;
+	font-weight: 700;
+}
+iframe {
+	width: 100%;
+}
+
+/* ============== Media Queries Orientation Landscape =============== */
+@media screen and (min-width: 768px) {
+	.soundCloud_container {
+		width: 50%;
+	}
+	.wp-block-image {
+		max-width: 50%;
+		height: auto;
+	}
+	iframe {
+		width: 50%;
+	}
+	.event_content p {
+		@include horizontalFlex(space-between, center);
+		flex-wrap: wrap;
+		font-size: 20px;
+	}
+}

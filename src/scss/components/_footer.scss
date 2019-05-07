@@ -1,0 +1,82 @@
+footer {
+	display: grid;
+	grid-template-rows: 80px 160px 80px 80px;
+	grid-template-columns: 1fr 8fr 1fr;
+	justify-items: center;
+	border-top: 1px solid $soilBrown;
+	background: $soilBrownLight;
+	background: linear-gradient(
+		        rgba(90, 45, 12, .99),
+		        rgba(144, 91, 56, .99),
+		        rgba(144, 91, 56, .99),
+		        rgba(90, 45, 12, .99)
+		        );
+	color: $white;
+}
+.bottom_nav, .contact_details, .social_menu, .copyright {
+	grid-column: 2;
+}
+.bottom_nav {
+	grid-row: 1;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	@include horizontalFlex(center, center);
+}
+.bottom_nav ul {
+	@include ulStyle();
+	text-align: center;
+}
+.bottom_nav ul li {
+	display: inline;
+}
+.bottom_nav ul li a {
+	color: $white;
+	text-decoration: none;
+}
+.bottom_nav ul li:last-child .separator {
+	display: none;
+}
+footer .current_page_item a  {
+			border-bottom: none;
+}
+.contact_details {
+	grid-row: 2;
+	@include verticalFlex(center, center);
+	height: 100%;
+	width: 100%;
+	padding: 0;
+}
+.contact_details a {
+	color: $white;
+	text-decoration: none;
+}
+.contact_details span {
+	text-align: center;
+	padding: 10px 25px 0 25px;
+}
+footer .social_menu {
+	grid-row: 3;
+	height: 100%;
+	width: 100%;
+	@include horizontalFlex(center, center);
+}
+footer .social_menu__items ul li a[href*="facebook.com"]::before {
+	grid-column: 2;
+}
+footer .social_menu__items ul li a[href*="instagram.com"]::before {
+	grid-column: 2;
+}
+footer .social_menu__items ul li a[href*="tripadvisor.com"]::before {
+	grid-column: 2;
+}
+.copyright {
+	grid-row: 4;
+	@include horizontalFlex(center, center);
+	height: 100%;
+	width: 100%;
+}
+.copyright p {
+	margin: 0;
+	padding: 0;
+}

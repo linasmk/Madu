@@ -1,0 +1,118 @@
+/* ======================= Events ================================
+====================================================================*/
+
+/* ============== Hero =============== */
+.hero_events {
+	height: 40vh;
+	width: 100%;
+	background-position: center center;
+	background-size: cover;
+	@include horizontalFlex(center, center);
+	position: relative;
+}
+.hero_events::after {
+    @include imageOverlay(
+    	linear-gradient(
+    	rgba(255, 255, 255  , 0), 
+    	rgba(0,0,0, .3), 
+    	rgba(255, 255, 255  , 0)
+    	),
+		linear-gradient(
+    	rgba(255, 255, 255  , 0), 
+    	rgba(0,0,0, .3) 35% 65%, 
+    	rgba(255, 255, 255  , 0)
+    	)
+    	);
+}
+/* ============== Main content =============== */
+.main_events {
+	width: 100%;
+	margin: 0 0 50px 0;
+	text-align: center;
+}
+/* ============== Posts =============== */
+.main_events h3 {
+	margin: 0 0 10px 0;
+	padding: 10px 0;
+	line-height: 30px;
+	color: $white;
+	background: linear-gradient(15deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8),
+	            	rgba(0, 102, 26, .97));
+	background: linear-gradient(15deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8) 40% 60%,
+	            	rgba(0, 102, 26, .97));
+}
+.post {
+	width: 80%;
+	margin: 0 auto 50px auto;
+	text-align: left;
+}
+.event_date time {
+	color: $soilBrown;
+	font-size: 18px;
+	@include horizontalFlex(space-between, center);
+}
+.post_content {
+	position: relative;
+}
+.post_date time span:nth-child(1) {
+	
+}
+.post_date time span:nth-child(2) {
+	
+}
+.post_date time span:nth-child(3) {
+	
+}
+.post .post_date {
+	font-size: 12px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+/* ============== Pagination =============== */
+.pagination_box {
+	@include horizontalFlex(center, center);
+	flex-wrap: wrap;
+}
+.page-numbers {
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	background: $soilBrownLight;
+	background: linear-gradient(
+		        rgba(90, 45, 12, .99),
+		        rgba(144, 91, 56, .99),
+		        rgba(144, 91, 56, .99),
+		        rgba(90, 45, 12, .99)
+		        );
+	color: $white;
+	font-size: 18px;
+	text-decoration: none;
+	border: 1px solid $white;
+	transition: opacity .5s ease-out;
+	&:visited {
+		opacity: .6;
+	}
+	&:hover {
+		opacity: .6;
+	}
+}
+
+/* ============== Media Queries Orientation Landscape =============== */
+@media screen and (orientation: landscape) and (min-width: 533px) {
+	.hero_events {
+		height: 60vh;
+	}
+}
+.embedded_content {
+	position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 35px;
+    height: 0;
+    overflow: hidden;
+}
