@@ -1,0 +1,134 @@
+/* ======================= Contact ================================
+====================================================================*/
+
+/* ======================= Hero Contacts ================== */
+.hero_contacts {
+	background-size: 100%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 30vh;
+	width: 100%;
+	@include horizontalFlex(center, center);
+	position: relative;
+}
+.hero_contacts::after {
+    @include imageOverlay(
+    	linear-gradient(
+    	rgba(255, 255, 255  , 0), 
+    	rgba(0,0,0, .3), 
+    	rgba(255, 255, 255  , 0)
+    	),
+		linear-gradient(
+    	rgba(255, 255, 255  , 0), 
+    	rgba(0,0,0, .3) 35% 65%, 
+    	rgba(255, 255, 255  , 0)
+    	)
+    	);
+}
+.contact_wrapper {
+	width: 80%;
+	margin: 0 auto;
+}
+/* ======================= Table Reservation ================== */
+.reservation_wrapper {
+	@include verticalFlex(center, center);
+}
+.reservation_wrapper h3 {
+	color: $soilBrown;
+}
+.reservation_form {
+	width: 100%;
+	margin: 0 0 50px 0;
+	padding: 25px;
+	box-sizing: border-box;
+	@include backgroundIMG(url(img/crepe_pizza.jpg), cover, center center);
+	position: relative;
+}
+.reservation_form::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .5);
+}
+.contact_field {
+	@include verticalFlex(center, center);
+	width: 100%;
+	position: relative;
+	margin: 40px 0;
+	z-index: 1;
+}
+.contact_field input, .contact_field textarea {
+	width: 100%;
+	height: 45px;
+	padding: 10px 10px;
+	background-color: transparent;
+	color: $white;
+	outline: 1px solid $white;
+	border: none;
+	&:focus {
+		outline-offset: 0;
+	}
+}
+.contact_field textarea {
+	height: 150px;
+}
+.contact_field input[type="submit"] {
+	background: linear-gradient(15deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8),
+	            	rgba(0, 102, 26, .97));
+	background: linear-gradient(15deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8) 40% 60%,
+	            	rgba(0, 102, 26, .97));
+	outline: none;
+	border-radius: 15px;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	&:hover {
+		opacity: .9;
+	}
+}
+.contact_field ::-webkit-input-placeholder {
+	color: $white;
+}
+.contact_field::-moz-placeholder { /* Firefox 19+ */
+  	color: $white;
+}
+.contact_field:-ms-input-placeholder { /* IE 10+ */
+ 	color: $white;
+}
+.contact_field:-moz-placeholder { /* Firefox 18- */
+  	color: $white;
+}
+/* ======================= Google Maps Location ================== */
+.googlemaps_wrapper h3 {
+	text-align: center;
+}
+/* ============== Media Queries =============== */
+@media screen and (min-width: 480px) {
+	.contact_field input, .contact_field textarea {
+		width: 80%;
+	}
+}
+@media screen and (min-width: 768px) {
+	.hero_contacts {
+		height: 45vh;
+	}
+	.contact_wrapper {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+	.contact_field input, .contact_field textarea {
+		width: 60%;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.hero_contacts {
+		height: 70vh;
+	}
+}

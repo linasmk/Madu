@@ -8,7 +8,9 @@
 </head>
 <body <?php body_class(); ?>>
 	<header class="site_header">
-		<div class="menu_toggle"><div class="hamburger"></div></div>	
+		<div class="menu_toggle">
+			<div class="hamburger"></div>
+		</div>	
 		<article class="header_container">
 			<div class="header_logo__large">
 					<a href="<?php echo esc_url( home_url('/') ); ?>">

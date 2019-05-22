@@ -1,4 +1,4 @@
-// $ = jQuery.noConflict();
+$ = jQuery.noConflict();
 
 // Opening and closing mobile navigation
 const nav = document.querySelector(".header_menu"),
@@ -28,30 +28,31 @@ document.addEventListener('click', (e) => {
     } 
 });
 
+// Fluidbox Plugin for about gallery  
+jQuery('.blocks-gallery-item figure a').each(function() {
+  jQuery(this).attr({'data-fluidbox': ''});
+});
+
+if(jQuery('[data-fluidbox]').length > 0 ) {
+  jQuery('[data-fluidbox]').fluidbox();
+}
+
+// Fluidbox Plugin for sidebar gallery  
+jQuery('.gallery a').each(function() {
+  jQuery(this).attr({'data-fluidbox': ''});
+});
+
+if(jQuery('[data-fluidbox]').length > 0 ) {
+  jQuery('[data-fluidbox]').fluidbox();
+}
+
 
  
-
-// document.addEventListener('DOMContentLoaded', function() {
-// 	if(window.innerWidth > breakpoint) {
-// 		nav.classList.toggle('active');
-// 	}
-// });
-
-
-// Configuring the navigation
-// $(document).ready( function() {
-// 	$('.menu_toggle').on('click', function() {
-// 		$('.top_nav').toggle(700, 'swing');
-// 		$(this).toggleClass('open');
-// 	});
-
-// 	const breakpoint = 768;
-// 	$(window).resize(function() {
-// 		if($(document).width() >= breakpoint) {
-// 			$('.top_nav').show();
-// 		} else {
-// 			$('top_nav').hide();
-// 		}
-// 	});
-
-// });
+// Google Maps
+var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }

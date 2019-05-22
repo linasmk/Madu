@@ -56,7 +56,7 @@
     	rgba(0,0,0, .4) 35% 65%, rgba(255, 228, 196  , .3));
 }
 .split_image:hover {
-	transform: scale(1.125);
+	transform: scale(1.55);
 }
 .split_image h2 {
 	margin: 0;
@@ -79,14 +79,32 @@
 }
 .main_content {
 	width: 80%;
-	margin: 0 auto;
+	margin: 0 auto 55px auto;
 	position: relative;
 }
+
 .hero_content__text h2 {
 	margin: 0;
 	color: $soilBrown;
 }
 
+.second_about___p {
+	margin-bottom: 45px;
+}
+
+/* ============== Gallery =============== */
+.blocks-gallery-item figure {
+	max-width: 150px;
+	max-height: 150px;
+}
+/* ============== Media Queries =============== */
+
+@media screen and (min-width: 768px) {
+	.blocks-gallery-item figure {
+		max-width: 350px;
+		max-height: 350px;
+	}
+}
 /* ============== Media Queries Orientation Portrait =============== */
 
 @media screen and (orientation: portrait) and (min-width: 998px) {

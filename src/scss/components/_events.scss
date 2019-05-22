@@ -25,53 +25,49 @@
     	);
 }
 /* ============== Main content =============== */
+.event_page__wrapper {
+	width: 80%;
+	margin: 0 auto 50px auto;
+}
 .main_events {
 	width: 100%;
 	margin: 0 0 50px 0;
-	text-align: center;
+	text-align: left;
 }
 /* ============== Posts =============== */
 .main_events h3 {
-	margin: 0 0 10px 0;
-	padding: 10px 0;
+	margin: 25px 0 25px 0;
 	line-height: 30px;
-	color: $white;
-	background: linear-gradient(15deg, 
+	color: $soilBrown;
+	/*background: linear-gradient(15deg, 
 	            	rgba(0, 102, 26, .97),
 	            	rgba(0, 204, 51, .8),
 	            	rgba(0, 102, 26, .97));
 	background: linear-gradient(15deg, 
 	            	rgba(0, 102, 26, .97),
 	            	rgba(0, 204, 51, .8) 40% 60%,
-	            	rgba(0, 102, 26, .97));
+	            	rgba(0, 102, 26, .97));*/
 }
 .post {
-	width: 80%;
-	margin: 0 auto 50px auto;
 	text-align: left;
 }
 .event_date time {
 	color: $soilBrown;
+	font-weight: 500;
 	font-size: 18px;
 	@include horizontalFlex(space-between, center);
+	margin-bottom: 25px;
 }
 .post_content {
 	position: relative;
-}
-.post_date time span:nth-child(1) {
-	
-}
-.post_date time span:nth-child(2) {
-	
-}
-.post_date time span:nth-child(3) {
-	
+	padding: 0 25px;
+	margin-bottom: 55px;
 }
 .post .post_date {
 	font-size: 12px;
 	position: absolute;
 	bottom: 0;
-	right: 0;
+	right: 5%;
 }
 /* ============== Pagination =============== */
 .pagination_box {
@@ -79,6 +75,7 @@
 	flex-wrap: wrap;
 }
 .page-numbers {
+	text-align: center;
 	display: block;
 	width: 40px;
 	height: 40px;
@@ -102,17 +99,47 @@
 		opacity: .6;
 	}
 }
+.widgets {
+	display: none;
+}
+
+/* ============== Media Queries  =============== */
+@media screen and (min-width: 998px) {
+	.event_page__wrapper {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+	.main_events {
+		grid-column: 1;
+	}
+	.widgets {
+		display: block;
+		grid-column: 2;
+		padding: 0 30px;
+	}
+	.post_content {
+		padding: 0 50px 0 25px;
+	}
+	.post .post_date {
+		right: 15%;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.event_page__wrapper {
+		grid-template-columns: 70% 30%;
+	}
+}
 
 /* ============== Media Queries Orientation Landscape =============== */
 @media screen and (orientation: landscape) and (min-width: 533px) {
 	.hero_events {
 		height: 60vh;
 	}
-}
-.embedded_content {
-	position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 35px;
-    height: 0;
-    overflow: hidden;
+	.embedded_content {
+		position: relative;
+	    padding-bottom: 56.25%;
+	    padding-top: 35px;
+	    height: 0;
+	    overflow: hidden;
+	}
 }

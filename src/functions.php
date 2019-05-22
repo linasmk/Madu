@@ -1,10 +1,25 @@
 <?php
+// Importing database.php file (contains SQL structure)
+require get_template_directory() . '/includes/database.php';
+
+// Handles submited reservations to the database
+require get_template_directory() . '/includes/reservations.php';
+
+// Creates option pages for the theme
+require get_template_directory() . '/includes/options.php';
+
+
 // Addomg post-thumbnails to the admin panel
 function madu__setup() {
 	add_theme_support('post-thumbnails');
 
 	add_image_size('split-images', 700, 550, true);
 	add_image_size('specialties', 300, 201, true);
+
+	add_image_size('specialty_item', 250, 320, true);
+
+	// update_option('thumbnail_size_w', 75);
+	// update_option('thumbnail_size_h', 75);
 }
 add_action('after_setup_theme', 'madu__setup');
 
@@ -13,18 +28,26 @@ function madu__styles() {
 	//Adding CSS stylesheets
 	wp_register_style('googlefont', 'https://fonts.googleapis.com/css?family=Bungee+Inline|Jacques+Francois+Shadow|Noto+Serif+JP:400,600,700,900|Vollkorn+SC:400,600,700', array(), '1.0.0');
 	wp_register_style('fontawesome', 'https://use.fontawesome.com/releases/v5.7.2/css/all.css', array(), '5.7.2');
+	wp_register_style('fluidboxcss', 'https://cdnjs.cloudflare.com/ajax/libs/fluidbox/2.0.5/css/fluidbox.min.css', array(), '2.0.5');
+	wp_register_style('fluidboxcssmap', 'https://cdnjs.cloudflare.com/ajax/libs/fluidbox/2.0.5/css/fluidbox.min.css.map', array(), '2.0.5');
 	wp_register_style('style', get_template_directory_uri() . '/style.css', array(), '1.0.0');
 
 	//Enqueuing stylesheets
 	wp_enqueue_style('googlefont');
 	wp_enqueue_style('fontawesome');
+	wp_enqueue_style('fluidboxcss');
+	wp_enqueue_style('fluidboxcssmap');
 	wp_enqueue_style('style');
 
 	//Adding js scripts
+	wp_register_script('fluidboxjs', 'https://cdnjs.cloudflare.com/ajax/libs/fluidbox/2.0.5/js/jquery.fluidbox.min.js', array('jquery'), '2.0.5', true);
+	wp_register_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBz02VRxO_dgaKsCS62TLL4AW4McNKQiKU&callback=initMap', array(''), '', true);
 	wp_register_script('script', get_template_directory_uri() . "/js/main.min.js", array('jquery'), '1.0.0', true);
 	
 	//Enqueuing scripts
 	wp_enqueue_script('jquery');
+	wp_enqueue_script('fluidboxjs');
+	wp_enqueue_script('googlemaps');
 	wp_enqueue_script('script');
 }
 add_action('wp_enqueue_scripts', 'madu__styles');
@@ -79,6 +102,23 @@ function madu_specialties() {
 	register_post_type( 'specialties', $args );
 }
 add_action( 'init', 'madu_specialties' );
+
+// Widget zone
+function madu_widgets() {
+	register_sidebar(
+		array(
+			'name'          => 'Blog Sidebar',
+			'id'            => 'blog_sidebar',
+			'before_widget' => '<div class="widget">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>'
+		));
+}
+add_action('widgets_init', 'madu_widgets');
+
+
+
 
 // Modify The Read More Link Text
 function modify_read_more_link() {
