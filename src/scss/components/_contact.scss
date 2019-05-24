@@ -26,8 +26,7 @@
     	);
 }
 .contact_wrapper {
-	width: 80%;
-	margin: 0 auto;
+	width: 100%;
 }
 /* ======================= Table Reservation ================== */
 .reservation_wrapper {
@@ -35,9 +34,11 @@
 }
 .reservation_wrapper h3 {
 	color: $soilBrown;
+	text-align: center;
 }
 .reservation_form {
 	width: 100%;
+	height: 600px;
 	margin: 0 0 50px 0;
 	padding: 25px;
 	box-sizing: border-box;
@@ -57,7 +58,7 @@
 	@include verticalFlex(center, center);
 	width: 100%;
 	position: relative;
-	margin: 40px 0;
+	margin: 25px 0;
 	z-index: 1;
 }
 .contact_field input, .contact_field textarea {
@@ -104,9 +105,16 @@
 .contact_field:-moz-placeholder { /* Firefox 18- */
   	color: $white;
 }
-/* ======================= Google Maps Location ================== */
+/* ======================= Google Maps  ================== */
+.googlemaps_wrapper {
+	margin-bottom: 50px;
+}
 .googlemaps_wrapper h3 {
 	text-align: center;
+	color: $soilBrown;
+}
+#map {
+	height: 400px;
 }
 /* ============== Media Queries =============== */
 @media screen and (min-width: 480px) {
@@ -125,10 +133,17 @@
 	.contact_field input, .contact_field textarea {
 		width: 60%;
 	}
+	#map {
+	height: 600px;
+}
 }
 
 @media screen and (min-width: 1024px) {
 	.hero_contacts {
 		height: 70vh;
+	}
+	.contact_wrapper {
+		width: 80%;
+		margin: 0 auto;
 	}
 }

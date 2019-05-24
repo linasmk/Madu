@@ -28,6 +28,7 @@ document.addEventListener('click', (e) => {
     } 
 });
 
+
 // Fluidbox Plugin for about gallery  
 jQuery('.blocks-gallery-item figure a').each(function() {
   jQuery(this).attr({'data-fluidbox': ''});
@@ -45,14 +46,35 @@ jQuery('.gallery a').each(function() {
 if(jQuery('[data-fluidbox]').length > 0 ) {
   jQuery('[data-fluidbox]').fluidbox();
 }
+var dudu = 'tadas';
 
 
- 
-// Google Maps
-var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-      });
-    }
+// Adapt Google Maps to container
+// let gmap = $('#map');
+// if(gmap.length > 0) {
+//     if($(document).width() >= breakpoint) {
+//         displayMap(0);
+//     } else {
+//         displayMap(300);
+//     }
+// }
+
+// $(window).resize(function() {
+//    if($(document).width() >= breakpoint) {
+//         displayMap(0);
+//     } else {
+//         displayMap
+//       }
+// });
+
+// function displayMap(value) {
+//   if(value == 0) {
+//     let locationSection = $('.contact_wrapper');
+//     let locationHeight = locationSection.height();
+//     $('#map').css({'height': locationHeight})
+//   } else {
+//       $('#map').css({'height': value})
+//   }
+// }
+
+

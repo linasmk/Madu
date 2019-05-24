@@ -14,9 +14,7 @@
 	</section>
 	<main class="contact_wrapper">
 		<?php get_template_part('templates/reservation', 'form'); ?>
-		<section class="googlemaps_wrapper">
-			<h3>Our Location</h3>
-		</section>
+		<?php get_template_part('templates/google', 'maps' ); ?>
 	</main>
 
 	<?php endwhile; ?>

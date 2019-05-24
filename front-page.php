@@ -34,6 +34,7 @@
 		<main class="main_wrapper">
 
 			<section class="main_content">
+					<h2>About</h2>
 					<p><?php the_content(); ?></p>
 			</section>
 		<?php endwhile; ?>
@@ -66,21 +67,12 @@
 					<?php endwhile; wp_reset_postdata();
 					?>
 				</div>
-			</section>
-
-			<section class="location_reservation">
-				<div>
-					<div>
-						<div id="map">
-							
-						</div>
-					</div>
-				</div>
-				<div class="contact_wrapper">
-					<?php get_template_part('templates/reservation', 'form'); ?>
-				</div>
-			</section>
-				
+			</section>	
 		</main>
-		
+		<section class="location_reservation">
+				<?php get_template_part('templates/reservation', 'form'); ?>
+			
+				<?php get_template_part('templates/google', 'maps' ); ?>
+		</section>
+	
 <?php get_footer(); ?>
