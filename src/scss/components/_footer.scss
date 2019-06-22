@@ -1,9 +1,8 @@
 footer {
 	display: grid;
-	grid-template-rows: 80px 160px 80px 80px;
+	width: 100%;
 	grid-template-columns: 1fr 8fr 1fr;
 	justify-items: center;
-	border-top: 1px solid $soilBrown;
 	background: $soilBrownLight;
 	background: linear-gradient(
 		        rgba(90, 45, 12, .99),
@@ -13,18 +12,18 @@ footer {
 		        );
 	color: $white;
 }
-.bottom_nav, .contact_details, .social_menu, .copyright {
+.bottom_nav, .contact_details, .social_menu, .arrow_container, .copyright {
 	grid-column: 2;
+	margin: 30px auto;
 }
+/* ============== Footer Navigation =============== */
 .bottom_nav {
 	grid-row: 1;
-	padding: 0;
-	height: 100%;
 	width: 100%;
 	@include horizontalFlex(center, center);
 }
 .bottom_nav ul {
-	@include ulStyle();
+	@extend %ulStyle;
 	text-align: center;
 }
 .bottom_nav ul li {
@@ -33,6 +32,9 @@ footer {
 .bottom_nav ul li a {
 	color: $white;
 	text-decoration: none;
+	&:hover {
+		color: rgba(255,255,255, .6);
+	}
 }
 .bottom_nav ul li:last-child .separator {
 	display: none;
@@ -40,12 +42,12 @@ footer {
 footer .current_page_item a  {
 			border-bottom: none;
 }
+/* ============== Footer Contact Details =============== */
 .contact_details {
 	grid-row: 2;
 	@include verticalFlex(center, center);
-	height: 100%;
 	width: 100%;
-	padding: 0;
+	line-height: 25px;
 }
 .contact_details a {
 	color: $white;
@@ -53,30 +55,86 @@ footer .current_page_item a  {
 }
 .contact_details span {
 	text-align: center;
-	padding: 10px 25px 0 25px;
+	padding: 0 25px 0 25px;
 }
+/* ============== Footer Social Menu =============== */
 footer .social_menu {
 	grid-row: 3;
-	height: 100%;
 	width: 100%;
 	@include horizontalFlex(center, center);
 }
-footer .social_menu__items ul li a[href*="facebook.com"]::before {
-	grid-column: 2;
+footer .social_menu__items ul li a::before {
+	height: 40px;
+	width: 40px;
+	transition: transform .5s ease-in-out;
+	margin: 0 15px;
+	border: 1px solid $white;
+	@include horizontalFlex(center, center);
 }
-footer .social_menu__items ul li a[href*="instagram.com"]::before {
-	grid-column: 2;
+footer .social_menu__items ul li a:hover:before {
+	transform-style: preserve-3d;
+	transform: rotate3d(0,1,0, 55deg) scale(1.15);
 }
-footer .social_menu__items ul li a[href*="tripadvisor.com"]::before {
-	grid-column: 2;
+.social_menu__items ul li a[href*="facebook.com"]::before {
+	content: "\f39e";
+	font-size: 18px;
 }
+.social_menu__items ul li a[href*="instagram.com"]::before {
+	content: "\f16d";
+	font-size: 21px;
+}
+.social_menu__items ul li a[href*="tripadvisor.com"]::before {
+	content: "\f262";
+	font-size: 23px;
+}
+
+/* ============== Footer Copuright =============== */
 .copyright {
 	grid-row: 4;
 	@include horizontalFlex(center, center);
-	height: 100%;
 	width: 100%;
 }
 .copyright p {
 	margin: 0;
-	padding: 0;
+}
+
+/* ============== Up Arrow ========================*/
+.arrow_container {
+	grid-row: 5;
+	position: relative;
+	height: 50px;
+	@include horizontalFlex(center, center);
+}
+.footer_arrow {
+	grid-row: 4;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	bottom: 1%;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 1px solid rgb(67, 33, 9);
+	border-radius: 50%;
+	background: $soilBrownLight;
+	background: linear-gradient(
+		        rgba(90, 45, 12, .99),
+		        rgba(144, 91, 56, .99),
+		        rgba(144, 91, 56, .99),
+		        rgba(90, 45, 12, .99)
+		        );
+	cursor: pointer;
+	@include horizontalFlex(center, center);
+	animation: MoveUpDownFooter 1s ease infinite;
+}
+.footer_arrow img {
+	width: 60%;
+	margin: 0 auto;
+}
+@keyframes MoveUpDownFooter {
+  0%, 100% {
+    bottom: 35%;
+  }
+  50% {
+    bottom: 15%;
+  }
 }

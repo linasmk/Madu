@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+	<?php wp_head(); ?>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- iOS compatible -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="Madu">
+	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri() ?>/img/apple-touch-icon.png">
+
+	<!-- Android compatible -->
+	<meta name="theme-color" content="rgba(0, 204, 51, .8)">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="application-name" content="Madu">
+	<link rel="icon" type="image/png" href="<?php echo get_template_directory_uri() ?>/img/icon.png" sizes="192x192">
+	
+
 	<title>Madu</title>
-	<?php wp_head(); ?>
+	
 </head>
 <body <?php body_class(); ?>>
-	<header class="site_header">
+	<header id="header" class="site_header">
 		<div class="menu_toggle">
 			<div class="hamburger"></div>
 		</div>	
@@ -40,10 +54,9 @@
 				</div>
 
 				<address class="contact_details__header">
-					<a href="tel:+370-626-69679"><span class="fa_icons">+370 626 69679</span></a>
+					<a href="tel:<?php echo esc_html(get_option('madu_phonenumber')); ?>"><span class="fa_icons"><?php echo esc_html(get_option('madu_phonenumber')); ?></span></a>
 		
-					<span class="fa_icons">Vilniaus g. 31 / Islandijos g. 1,
-					Vilnius, Lithuania</span>
+					<span class="fa_icons"><?php echo esc_html(get_option('madu_address')); ?></span>
 				</address>
 
 				<div class="social_menu__header">

@@ -48,11 +48,10 @@
 }
 .top_nav {
 	width: 100%;
-	/*overflow: hidden;*/
 }
 .top_nav ul {
-	@include ulStyle();
-	user-select: none;
+	@extend %ulStyle;
+	@extend %noHighlightAndSelect;
 }
 .top_nav ul li {
 	width: 100%;
@@ -70,11 +69,10 @@
 	font-family: Verdana, Georgia;
 	font-size: 1em;
 	text-transform: uppercase;
-	transition-duration: .7s;
-	transition-property: color;
-	user-select: none;
+	transition: color .7s ease-in-out;
+	@extend %noHighlightAndSelect;
 		& span {
-			user-select: none;
+			@extend %noHighlightAndSelect;
 		}
 		&:hover {
 			color: rgba(255,255,255, .6);
@@ -119,30 +117,20 @@
 .top_nav ul li:nth-child(1) .fa_icons::before {
 	font-family: "normal", "Font Awesome 5 Brands","Font Awesome 5 Free"; 
 	font-weight: 900; 
-	content: "\f015";
+	content: "\f015"; /* Home */
 }
 .top_nav ul li:nth-child(2) .fa_icons::before {
 	font-family: "normal", "Font Awesome 5 Brands","Font Awesome 5 Free";
 	font-weight: 900; 
-	content: "\f518";
+	content: "\f818"; /* Menu */
 }
 .top_nav ul li:nth-child(3) .fa_icons::before {
 	font-family: "Font Awesome 5 Free"; 
 	font-weight: 900; 
-	content: "\f818";
+	content: "\f79f"; /* Events */
 }
 .top_nav ul li:nth-child(4) .fa_icons::before {
 	font-family: "Font Awesome 5 Free"; 
-	font-weight: 900; 
-	content: "\f79f";
-}
-/*.top_nav ul li:nth-child(5) .fa_icons::before {
-	font-family: "normal", "Font Awesome 5 Brands","Font Awesome 5 Free"; 
-	font-weight: 900; 
-	content: "\f1ea";
-}*/
-.top_nav ul li:nth-child(5) .fa_icons::before {
-	font-family: "normal", "Font Awesome 5 Brands","Font Awesome 5 Free"; 
 	font-weight: 900; 
 	content: "\f0e0";
 }
@@ -157,7 +145,7 @@
 }
 .social_menu__items ul {
 	width: 100%;
-	@include ulStyle();
+	@extend %ulStyle;
 	@include horizontalFlex(space-between, center);
 }
 .social_menu__items ul li {
@@ -168,42 +156,45 @@
 }
 .social_menu__items ul li a:before {
 	font-family: "normal", "Font Awesome 5 Brands","Font Awesome 5 Free";
-	width: 15px;
 	font-weight: 900; 
 	color: $white;
 	-webkit-font-smoothing: antialiased;
+
+	height: 30px;
+	width: 30px;
+	transition: transform .5s ease-in-out;
+	margin: 0 8px;
+	border: 1px solid $white;
+	@include horizontalFlex(center, center);
 }
-.social_menu__items ul li a {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr; 
-	justify-content: center;
-}
-.social_menu__items ul li a[href*="facebook.com"]::before {
-	grid-column: 1;
+
+header .social_menu__items ul li a[href*="facebook.com"]::before {
 	content: "\f39e";
-	font-size: 18px;
+	font-size: 15px;
 }
-.social_menu__items ul li a[href*="instagram.com"]::before {
-	grid-column: 1;
+header .social_menu__items ul li a[href*="instagram.com"]::before {
 	content: "\f16d";
-	font-size: 21px;
+	font-size: 16px;
 }
-.social_menu__items ul li a[href*="tripadvisor.com"]::before {
-	grid-column: 1;
+header .social_menu__items ul li a[href*="tripadvisor.com"]::before {
 	content: "\f262";
-	font-size: 24px;
-	justify-self: center;
+	font-size: 17px;
 }
 /* ============== Menu Toggle and Hamburger Icon =============== */
 .menu_toggle {
 	position: fixed;
+	@include verticalFlex(center, center);
 	right: 0;
-	top: 3%;
-	padding: 20px;
+	width: 40px;
+	height: 40px;
+	top: 15px;
+	right: 15px;
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 10px;
 	cursor: pointer;
 	z-index: 25;
-	user-select: none;
-	-webkit-tap-highlight-color: transparent;
+	@extend %noHighlightAndSelect;
 }
 .hamburger, .hamburger::before, .hamburger::after {
 	content: '';
@@ -266,9 +257,6 @@
 	.header_menu {
 		grid-row: 1;
 		grid-column: 2;
-		/*grid-template-columns: 1fr 1fr;
-		grid-template-rows: 6vh 6vh;*/
-		/*display: grid;*/
 		@include horizontalFlex(flex-end, center);
 		position: static;
 	  	width: 100%;
@@ -277,23 +265,8 @@
 	  	background: transparent;	
 	}
 	.contact_details__header {
-		/*grid-row: 1;
-		grid-column: 2;
-		@include horizontalFlex(space-between, flex-start);*/
 		display: none;
 	}
-	/*.contact_details__header a {
-		width: 35%;
-	}
-	
-	.contact_details__header span {
-		width: 65%;
-		text-align: right;
-		padding-right: 10px;
-	}
-	.contact_details__header a .fa_icons::before, .contact_details__header span::before {
-		display: none;
-	}*/
 	.navigation_container {
 		grid-row: 1;
 		grid-column: 1/ span 2;
@@ -329,7 +302,6 @@
 		margin: 0 auto;
 	}
 }
-
 @media screen and (orientation: landscape) and (min-width: 530px) {
 	.header_logo_small {
 		width: 100px;

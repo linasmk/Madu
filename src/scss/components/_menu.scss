@@ -98,16 +98,27 @@
 	font-weight: 900;
 }
 .specialty_link {
-	@include linkButton(100px, 25px, $soilBrown, $white, 25px);
-	transition: transform .4s ease-out;
-	box-shadow: none;
-	font-size: 16px;
+	background-color: $soilBrown;
+	text-align: center;
+	display: block;
+	color: $white;
+	text-decoration: none;
+	border-radius: 10px;
+	width: 140px;
+	height: 35px;
+	line-height: 35px;
+	font-size: 20px;
+	@extend %noHighlightAndSelect;
+	@include gradientAnimation(rgba(90,45,12,.99), rgba(144,91,56,.99));
+	&:before {
+		border-radius: 10px;
+	}
+	
 }
-.specialty_link:hover {
-	transform: scale(1.025);
+.grid_column h5 + p {
+	height: 60px;
+	padding: 0 5px;
 }
-
-
 /* ============== Media Queries =============== */
 	
 @media screen and (min-width: 420px) {
@@ -169,7 +180,7 @@
 }
 @media screen and (min-width: 1500px) {
 	.specialty_img {
-		height: 300px;
+		height: 260px;
 	}
 }
 @media screen and (min-width: 2000px) {

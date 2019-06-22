@@ -7,7 +7,7 @@
 	
 	<!-- get_the_post_thumbnail_url() returns the url without the img tag. This is a way to
 	set the image as a background img and not as a HTML tag -->
-	<section class="hero_menu" style="background-image:url(<?php echo get_the_post_thumbnail_url() ?>);">
+	<section class="hero hero_menu" style="background-image:url(<?php echo get_the_post_thumbnail_url() ?>);">
 		<h2 class="primary_text">Our Menu</h2>	
 	</section>
 	

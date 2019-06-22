@@ -6,7 +6,7 @@
 	$image = wp_get_attachment_image_src($image, 'full');
 ?>
 
-<section class="hero_events" style="background-image:url(<?php echo $image[0] ?>);">
+<section class="hero hero_events" style="background-image:url(<?php echo $image[0] ?>);">
 	<h2 class="primary_text"><?php echo get_the_title($events_page); ?></h2>
 </section>
 

@@ -1,0 +1,76 @@
+/* ========== Datetime Local Polyfill Customization =================
+====================================================================*/
+button.datetime-local-datepicker-button {
+	width: 100%;
+	border: none;
+	color: $white;
+	padding: 10px;
+	@extend .bg_forestGreen_lightForestGreen;
+	outline: 1px solid $white;
+	&::after {
+		border-top-color: $white;
+		border-right-color: transparent;
+		border-bottom-color: transparent;
+		border-left-color: transparent;
+	}
+}
+.contact_field span {
+	width: 100%;
+}
+div.datetime-local-calendar-dialog.datetime-local-open {
+	width: 250px;
+	@extend .bg_forestGreen_lightForestGreen;
+	color: $white;
+	padding: 10px;
+	& a {
+		color: $coral;
+		font-weight: 900;
+		padding: 3px;
+	}
+}
+.ui-datepicker-next {
+	float: right;
+}
+.ui-datepicker-header, .ui-corner-all {
+	cursor: pointer;
+}
+div.datetime-local-spin-btn-container {
+	float: right;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+div.datetime-local-spin-btn-container {
+
+}
+div.datetime-local-spin-btn-container .datetime-local-spin-btn-up, 
+div.datetime-local-spin-btn-container .datetime-local-spin-btn-down {
+	@extend .bg_forestGreen_lightForestGreen;
+	border: none;
+	height: 21.5px !important;
+}
+div.datetime-local-spin-btn-container .datetime-local-spin-btn-up::before {
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: $white;
+	border-left-color: transparent;
+}
+div.datetime-local-spin-btn-container .datetime-local-spin-btn-down::before {
+	border-top-color: $white;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+}
+/*                   */
+/*.ui-datepicker-current .ui-state-default .ui-priority-secondary .ui-corner-all {
+	background-color: $soilBrown;
+}*/
+
+.ui-priority-secondary {
+	background-color: $soilBrown;
+	font-size: 14px;
+	border: none;
+}
+
+
+/* ============== Media Queries =============== */

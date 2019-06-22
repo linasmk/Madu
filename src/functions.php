@@ -9,19 +9,22 @@ require get_template_directory() . '/includes/reservations.php';
 require get_template_directory() . '/includes/options.php';
 
 
-// Addomg post-thumbnails to the admin panel
+// Adding post-thumbnails to the admin panel
 function madu__setup() {
 	add_theme_support('post-thumbnails');
 
 	add_image_size('split-images', 700, 550, true);
 	add_image_size('specialties', 300, 201, true);
 
-	add_image_size('specialty_item', 250, 320, true);
+	add_image_size('specialty_item', 300, 320, true);
 
 	// update_option('thumbnail_size_w', 75);
 	// update_option('thumbnail_size_h', 75);
+
+	add_theme_support('title-tag');
 }
 add_action('after_setup_theme', 'madu__setup');
+
 
 // Adding styles
 function madu__styles() {
@@ -40,17 +43,68 @@ function madu__styles() {
 	wp_enqueue_style('style');
 
 	//Adding js scripts
+	if(is_page(11) || is_page(9) ) {
+		$apikey = esc_html(get_option('madu_gmap_apikey'));
+		wp_register_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?key=' . $apikey . '&callback=initMap', array(), '', true);
+	}
+	wp_register_script('recaptcha', 'https://www.google.com/recaptcha/api.js');
+
 	wp_register_script('fluidboxjs', 'https://cdnjs.cloudflare.com/ajax/libs/fluidbox/2.0.5/js/jquery.fluidbox.min.js', array('jquery'), '2.0.5', true);
-	wp_register_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBz02VRxO_dgaKsCS62TLL4AW4McNKQiKU&callback=initMap', array(), '', true);
+	// wp_register_script('datetime-local-polyfill', get_template_directory_uri() . '/js/datetime-local-polyfill.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'modernizr'), '', true );
+	wp_register_script('modernizr', 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', array('jquery'), '2.8.3', true);
+	wp_register_script('mapsjs', get_template_directory_uri() . "/js/maps.js", array(), '1.0.0', true);
 	wp_register_script('script', get_template_directory_uri() . "/js/main.js", array('jquery'), '1.0.0', true);
 	
 	//Enqueuing scripts
 	wp_enqueue_script('jquery');
+	wp_enqueue_script('jquery-ui-core');
+	wp_enqueue_script('jquery-ui-datepicker');
+	// wp_enqueue_script('datetime-local-polyfill');
+	wp_enqueue_script('modernizr');
 	wp_enqueue_script('fluidboxjs');
 	wp_enqueue_script('googlemaps');
+	wp_enqueue_script('recaptcha');
+	wp_enqueue_script('mapsjs');
 	wp_enqueue_script('script');
+
+
+	wp_localize_script(
+		'script',
+		'options',
+		array(
+			'latitude'    => esc_html ( get_option('madu_gmap_latitude') ),
+			'longitude'   => esc_html ( get_option('madu_gmap_longitude') ),
+			'zoom'        => esc_html ( get_option('madu_gmap_zoom') )
+		)
+	);
 }
 add_action('wp_enqueue_scripts', 'madu__styles');
+
+
+// Adding scripts to the admin area
+function madu_admin_scripts() {
+
+	wp_enqueue_script('sweetAlert2', "https://cdn.jsdelivr.net/npm/sweetalert2@8", array('jquery'), '8.12.1', true);
+	wp_enqueue_script('adminjs', get_template_directory_uri() . '/js/admin_ajax.js', array('jquery'), 1.0, true);
+
+	wp_localize_script(
+		'adminjs',
+		'admin_ajax',
+		array( 'ajaxurl'=> admin_url('admin-ajax.php') )
+	);
+}
+add_action('admin_enqueue_scripts', 'madu_admin_scripts');
+
+
+function add_async_defer($tag, $handle) {
+	
+	if('googlemaps' !== $handle) {
+		return $tag;
+	}
+	return str_replace(' src', 'async="async" defer="defer" src', $tag);
+}
+add_filter('script_loader_tag', 'add_async_defer', 10, 2);
+// add_action('wp_enqueue_script', 'load_js_assets');
 
 
 // Adding menus
@@ -137,10 +191,13 @@ function wpdocs_custom_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
-function add_async_defer($tag, $handle) {
-	if('googlemaps' !== $handle) {
-		return $tag;
-	}
-	return str_replace(' src', 'async="async" defer="defer" src', $tag);
+
+function theme_directory_uri() {
+	wp_localize_script(
+			'mapsjs', 'uri_object', array(
+				'theme_directory_uri' => get_template_directory_uri()
+			));
 }
-add_filter('script_loader_tag', 'add_async_defer', 10, 2);
+add_action('init', 'theme_directory_uri');
+
+

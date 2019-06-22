@@ -1,37 +1,144 @@
 /* ======================= Home ================================
 ====================================================================*/
-.home .main_wrapper {
+/* ============== Hero =============== */
+.hero {
+	height: $heroHeight_portrait_small;
+	width: 100%;
+	@include verticalFlex(center, center);
+	position: relative;
+}
+.logo_for__hero {
+	@include horizontalFlex(center, center);
+	position: absolute;
+	user-select: none;
+	width: 135px;
+	height: 135px;
+	z-index: 1;
+	background: rgba(0, 102, 26, .9);
+	background: linear-gradient(45deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8) 40% 60%,
+	            	rgba(0, 102, 26, .97));
+	border-radius: 50%;
+}
+.logo_for__hero a {
+	padding: 10px;
+	@include horizontalFlex(center, center);
+}
+.logo_for__hero a img {
 	width: 80%;
+}
+.img_box {
+	width: 100%;
+	height: 100%;
+	background: rgba(122, 122, 122, .5);
+	overflow: hidden;
+}
+.split_image {
+	position: relative;
+	width: 100%;
+	height: $splitImageHeight_portrait_small;
+	background-size: 100% 100%;
+	background-position: center center;
+	background-repeat:  no-repeat;
+	transition: transform .8s ease-in-out;
+	text-align: center;
+	@include verticalFlex(center, center);
+	&:hover {
+		transform: scale(1.25);
+	}
+}
+.split_image::after {
+	content: "";
+    width: 100%;
+    height: $splitImageHeight_portrait_small;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgba(255, 228, 196  , 0), 
+    	                        rgba(0,0,0, .4) 35% 65%, 
+    	                        rgba(255, 228, 196  , 0));
+}
+.split_image h2 {
+	margin: 0;
+	user-select: none;
+	color: $white;
+	z-index: 1;
+	font-size: 1.5em;
+}
+.split_image a {
+	@include linkButton(100px, 30px, $soilBrown, $white, 30px);
+	z-index: 1;
+}
+
+.hero_arrow {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	bottom: 2%;
+	left: 50%;
+	transform: translateX(-50%);
+	background: linear-gradient(15deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8),
+	            	rgba(0, 102, 26, .97));
+	background: linear-gradient(15deg, 
+	            	rgba(0, 102, 26, .97),
+	            	rgba(0, 204, 51, .8) 40% 60%,
+	            	rgba(0, 102, 26, .97));
+	@include horizontalFlex(center, center);
+	border-radius: 50%;
+	cursor: pointer;
+}
+@keyframes MoveUpDown {
+  0%, 90% {
+    bottom: 2%;
+  }
+  50% {
+    bottom: 1%;
+  }
+}
+.hero_arrow img {
+	width: 60%;
 	margin: 0 auto;
+}
+
+/* ============== Main Content =============== */
+.home .main_wrapper {
+	width: 100%;
 }
 .home .main_content {
 	text-align: center;
 	color: $soilBrown;
 }
+.home .main_content h2 {
+	margin: 0;
+	padding-top: 40px;
+}
 .home .main_content p {
 	margin: 35px 0;
 	line-height: 35px;
 }
-
+/* ============== Specialties =============== */
 .home .main_specialties {
 	text-align: center;
 }
 .home .main_specialties h2 {
 	color: $soilBrown;
 }
-.home .specialty_item {
-	margin-bottom: 50px;
-}
 .home .specialty_content {
 	max-width: 100%;
 	max-height: auto;
+	margin-bottom: 50px;
+}
+.home .specialty_content img {
+	width: 100%;
+	height: 100%;
 }
 .home .specialty_info {
 	@include verticalFlex(center, center);
 }
-.home .specialty_info .specialty_link {
-	align-self: right;
-}
+
 .home .specialty_info .price {
 	font-weight: 900;
 	font-size: 24px;
@@ -40,9 +147,23 @@
 .home .specialty_info .price, .home .specialty_info p {
 	margin: 10px 0;
 }
+.home .specialty_info h5 {
+	font-size: 25px;
+}
+.home .specialty_info p {
+	font-size: 20px;
+}
 
 /* ============== Media Queries =============== */
+@media screen and (min-width: 480px) {
+	.home .specialty_content img {
+		width: 50%;
+	}
+}
 @media screen and (min-width: 768px) {
+	.home .main_content h2 {
+		padding-top: 70px;
+	}
 	.home .main_content p {
 		font-size: 1.25em;
 	}
@@ -50,19 +171,24 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 	}
-}
-@media screen and (min-width: 992px) {
 	.home .specialty_wrapper {
 		width: 100%;
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		justify-items: center;
+		@include horizontalFlex(space-between, center);
+		margin-bottom: 50px;
 	}
 	.home .specialty_content {
+		width: 33.33%;
 		position: relative;
 		overflow: hidden;
-		display: table;
 		box-sizing: border-box;
+		margin-bottom: 0;
+	}
+	.home .specialty_content img {
+		width: 100%;
+		height: 100%;
+	}
+	.home .specialty_content:nth-child(2) {
+		margin:  0 10px;
 	}
 	.home .specialty_info {
 		position: absolute;
@@ -70,8 +196,6 @@
 		left: 0;
 		height: 100%;
 		width: 100%;
-		display: table-cell;
-		vertical-align: middle;
 		text-align: center;
 		color: $white;
 		padding: 5px;
@@ -92,29 +216,172 @@
 		opacity: 1;
 	}
 	.home .specialty_info h3 {
-		height: 60px;
+		height: 55px;
 		font-size: 20px;
+		margin: 10px;
 	}
 	.home .specialty_info h5 {
-		margin: 15px 0;
+		margin: 10px 0;
+		font-size: 18px;
 	}
 	.home .specialty_info .price {
 		height: 40px;
 		text-align: center;
-		margin: 15px 0;
+		margin: 10px 0;
 		font-size: 18px;
 	}
 	.home .specialty_info p {
 		height: 70px;
+		font-size: 15px;
 		text-align: left;
 		padding: 0 5px;
+		margin: 5px 0;
 	}
 	.home .specialty_info .specialty_link {
-		margin-top: 20px;
+		@include linkButton(120px, 30px, $soilBrown, $white, 30px);
+		margin-top: 15px;
+		font-size: 16px;
+	}
+}
+
+@media screen and (min-width: 992px){
+	.home .main_wrapper {
+		width: 80%;
+		margin: 0 auto;
 	}
 	.location_reservation {
 		width: 80%;
 		margin: 0 auto;
 	}
 }
+
+@media screen and (min-width: 1100px) {
+	.home .specialty_content:nth-child(2) {
+		margin:  0 20px;
+	}
+}
+
+@media screen and (min-width: 1300px) {
+	.home .specialty_content:nth-child(2) {
+		margin:  0 30px;
+	}
+}
+@media screen and (min-width: 1400px) {
+	.home .specialty_content:nth-child(2) {
+		margin:  0 40px;
+	}
+	.home .specialty_info h3 {
+		height: 60px;
+		font-size: 24px;
+		margin: 15px;
+	}
+	.home .specialty_info h5 {
+		margin: 10px 0;
+	}
+	.home .specialty_info .price {
+		height: 40px;
+		text-align: center;
+		margin: 15px 0;
+		font-size: 24px;
+	}
+	.home .specialty_info p {
+		height: 70px;
+		text-align: left;
+		padding: 0 5px;
+		margin: 5px 0;
+	}
+	.home .specialty_info .specialty_link {
+		margin-top: 15px;
+		font-size: 18px;
+	}
+}
+@media screen and (min-width: 1500px) {
+	.home .specialty_content:nth-child(2) {
+		margin:  0 50px;
+	}
+}
+@media screen and (min-width: 1600px) {
+	.home .specialty_content:nth-child(2) {
+		margin:  0 70px;
+	}
+}
+/* ============== Media Queries Orientation Portrait =============== */
+@media screen and (orientation: portrait) and (min-width: 768px) {
+	.hero {
+		height: $heroHeight_portrait_large;
+		@include horizontalFlex(center, center);
+	}
+	.split_image {
+		height: $splitImageHeight_portrait_large;
+	}
+	.split_image::after {
+		height: $heroHeight_portrait_large;
+	}
+	.split_image h2 {
+		font-size: 1.7em;
+	}
+}
+
+@media screen and (orientation: portrait) and (min-width: 998px) {
+	.hero {
+		height: $heroHeight_portrait_large;
+		@include horizontalFlex(center, center);
+	}
+	.split_image {
+		height: $splitImageHeight_portrait_large;
+	}
+	.split_image::after {
+		height: $heroHeight_portrait_large;
+	}
+	.split_image h2 {
+		font-size: 2.5em;
+	}
+}
+
+/* ============== Media Queries - Orientation Landscape =============== */
+@media screen and (orientation: landscape) and (min-width: 530px) {
+	.hero {
+		height: $heroHeight_landscape_small;
+		@include horizontalFlex(center, center);
+	}
+	.logo_for__hero {
+		width: 100px;
+		height: 100px;
+	}
+	.split_image {
+		height: $splitImageHeight_landscape_small;
+	}
+	.split_image::after {
+		height: $splitImageHeight_landscape_small;
+	}
+	.split_image h2 {
+		font-size: 1.2em;
+	}
+	.split_image a {
+		@include linkButton(100px, 30px, $soilBrown, $white, 30px);
+	}
+}
+@media screen and (orientation: landscape) and (min-width: 640px) {
+	.split_image h2 {
+		font-size: 1.5em;
+	}
+}
+@media screen and (orientation: landscape) and (min-width: 998px) {
+	.split_image:hover {
+		transform: scale(1.15);
+	}
+}
+@media screen and (orientation: landscape) and (min-width: 1024px) {
+	.split_image h2 {
+		font-size: 2.5em;
+	}
+	.logo_for__hero {
+		width: 150px;
+		height: 150px;
+	}
+}
+
+
+
+
 

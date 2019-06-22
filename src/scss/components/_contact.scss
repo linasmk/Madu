@@ -38,11 +38,12 @@
 }
 .reservation_form {
 	width: 100%;
-	height: 600px;
+	height: 700px;
 	margin: 0 0 50px 0;
 	padding: 25px;
 	box-sizing: border-box;
 	@include backgroundIMG(url(img/crepe_pizza.jpg), cover, center center);
+	@include verticalFlex(center, center);
 	position: relative;
 }
 .reservation_form::after {
@@ -58,23 +59,28 @@
 	@include verticalFlex(center, center);
 	width: 100%;
 	position: relative;
-	margin: 25px 0;
+	margin: 15px 0;
 	z-index: 1;
 }
 .contact_field input, .contact_field textarea {
 	width: 100%;
-	height: 45px;
+	height: 42px;
 	padding: 10px 10px;
 	background-color: transparent;
 	color: $white;
 	outline: 1px solid $white;
+	box-sizing: border-box;
 	border: none;
 	&:focus {
 		outline-offset: 0;
 	}
 }
 .contact_field textarea {
-	height: 150px;
+	height: 130px;
+}
+.g-recaptcha {
+	width: 100%;
+	margin: 20px 0;
 }
 .contact_field input[type="submit"] {
 	background: linear-gradient(15deg, 
@@ -118,7 +124,7 @@
 }
 /* ============== Media Queries =============== */
 @media screen and (min-width: 480px) {
-	.contact_field input, .contact_field textarea {
+	.contact_field  {
 		width: 80%;
 	}
 }
@@ -130,11 +136,11 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 	}
-	.contact_field input, .contact_field textarea {
+	.contact_field  {
 		width: 60%;
 	}
 	#map {
-	height: 600px;
+	height: 700px;
 }
 }
 

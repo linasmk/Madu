@@ -16,17 +16,21 @@ $vollkorn: 'Vollkorn SC', serif;
 $jackFrancois: 'Jacques Francois Shadow', cursive;
 $bungee: 'Bungee Inline', cursive;
 
-
 	/* For text */
 $noto: 'Noto Serif JP', serif;
 
 /* Media queries */
-$hero_height: 90vh;
-$split_image__height: 45vh;
+$heroHeight_portrait_small: 100vh;
+$splitImageHeight_portrait_small: 50vh;
 
+$heroHeight_portrait_medium: 94vh;
+$splitImageHeight_portrait_medium: 47vh;
 
-$split_image__height__large: 75vh;
-$hero_height__large: 75vh;
+$heroHeight_portrait_large: 45vh;
+$splitImageHeight_portrait_large: 45vh;
 
-$hero_height__large_portrait: 45vh;
-$split_image__height__large_portrait: 45vh;
+$heroHeight_landscape_small: 75vh;
+$splitImageHeight_landscape_small: 75vh;
+
+$heroHeight_landscape_large: 55vh;
+$splitImageHeight_landscape_large: 55vh;
